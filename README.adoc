@@ -1,0 +1,3 @@
+= node microservices
+
+a poc with 2 microservices, implemented with nodejs and express
