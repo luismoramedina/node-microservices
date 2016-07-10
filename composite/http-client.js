@@ -7,7 +7,7 @@ var options = {
 };
 
 exports.persons = function(callback) {
-  options.url = 'http://localhost:8081/api/pers2ons/1';
+  options.url = 'http://localhost:8081/api/persons/1';
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       callback(body);
