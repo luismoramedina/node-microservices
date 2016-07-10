@@ -1,5 +1,7 @@
 var express = require('express')();
 var bodyParser = require('body-parser');
+var async = require('async');
+
 var client = require('./http-client');
 
 
@@ -13,19 +15,31 @@ express.use(function(req, res, next) {
    next();
 });
 
-
 function compose(callback, err_callback) {
-   client.persons(function(err_p, personsdata) {
-      client.accounts(function(err_a, accountsdata) {
-         if (err_a || err_p) {
-            err_callback(err_a || err_p);
-         } else {
-            var persons = JSON.parse(personsdata);
-            var accounts = JSON.parse(accountsdata);
-            persons.accounts = accounts;
-            callback(JSON.stringify(persons));
-         }
-      });
+
+   async.parallel({
+      persons: function(callback) {
+         client.persons(function(err_p, personsdata){
+            callback(err_p, personsdata);
+         });
+      },
+      accounts: function(callback) {
+         client.accounts(function(err_a, accountsdata){
+            callback(err_a, accountsdata);
+         });
+      }
+   },
+   function(err, results) {
+      // results ---> {persons: {}, accounts: {}}
+      console.log(err);
+      if (err) {
+         err_callback(err);
+      } else {
+         var persons = JSON.parse(results.persons);
+         var accounts = JSON.parse(results.accounts);
+         persons.accounts = accounts;
+         callback(JSON.stringify(persons));
+      }
    });
 }
 
