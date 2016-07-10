@@ -17,7 +17,7 @@ function compose(callback) {
    });
 }
 
-express.get('/api/client/:id', function(req, res, next) {
+express.get('/api/clients/:id', function(req, res, next) {
    compose(function(data) {
       console.log('send response!');
       res.send(data);
