@@ -7,15 +7,15 @@ var options = {
 };
 
 exports.persons = function(callback) {
-  options.url = 'http://localhost:8081/api/persoAns/1';
-  request(options, function (error, response, body) {
+  options.url = 'http://localhost:8081/api/persons/1';
+  request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);
   });
 }
 
 exports.accounts = function(callback) {
   options.url = 'http://localhost:8082/api/accounts/1';
-  request(options, function (error, response, body) {
+  request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);
   });
 }
