@@ -10,6 +10,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
-    "request": "*"
+    "request": "2.*",
+    "async": "2.0.*"
   }
 }
