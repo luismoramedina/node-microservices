@@ -36,14 +36,13 @@ function compose(callback, err_callback) {
          err_callback(err);
       } else {
          var persons = JSON.parse(results.persons);
-         var accounts = JSON.parse(results.accounts);
-         persons.accounts = accounts;
+         persons.accounts = JSON.parse(results.accounts);
          callback(JSON.stringify(persons));
       }
    });
 }
 
-express.get('/api/clients/:id', function(req, res, next) {
+express.get('/api/clients/:id', function(req, res) {
    compose(function(data) {
       console.log('send response!');
       res.send(data);
