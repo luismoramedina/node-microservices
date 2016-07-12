@@ -7,6 +7,8 @@ var options = {
 };
 
 exports.persons = function(callback) {
+  console.log(process.domain);
+  console.log(process.domain._value1);
   options.url = 'http://localhost:8081/api/persons/1';
   request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);

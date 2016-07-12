@@ -1,6 +1,7 @@
 var express = require('express')();
 var bodyParser = require('body-parser');
 var async = require('async');
+var domain = require('domain');
 
 var client = require('./http-client');
 
@@ -13,6 +14,13 @@ express.use(function(req, res, next) {
    requestCount++;
    console.log('requestCount', requestCount);
    next();
+});
+
+express.use(function(req, res, next) {
+  var threadLocal = domain.create()
+  threadLocal._value1 = '1';
+  process.domain = threadLocal;
+  next();
 });
 
 function compose(callback, err_callback) {
