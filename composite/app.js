@@ -31,6 +31,7 @@ function compose(callback, err_callback) {
    },
    function(err, results) {
       // results ---> {persons: {}, accounts: {}}
+      console.log(results);
       console.log(err);
       if (err) {
          err_callback(err);
@@ -47,7 +48,7 @@ express.get('/api/clients/:id', function(req, res) {
       console.log('send response!');
       res.send(data);
    }, function(err) {
-      console.log('err', err);
+      console.error('err', err);
       res.status(500).send('error on services');
    });
 });

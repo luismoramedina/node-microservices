@@ -14,7 +14,7 @@ exports.persons = function(callback) {
 }
 
 exports.accounts = function(callback) {
-  options.url = 'http://localhost:8082/api/accounts/1';
+  options.url = 'http://localhost:8082/api/accounts/?dni=1';
   request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);
   });
