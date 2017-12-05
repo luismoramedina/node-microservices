@@ -1,0 +1,15 @@
+version: "3"
+services:
+  persons:
+    build: ./persons
+    ports:
+    - "8081:8081"
+  accounts:
+    build: ./accounts
+    ports:
+    - "8082:8082"
+  composite:
+    build: ./composite
+    ports:
+    - "8080:8080"
+

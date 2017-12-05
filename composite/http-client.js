@@ -2,19 +2,21 @@ var request = require('request');
 
 var options = {
   headers: {
-    'Authorization': 'Beader CCC'
+    'Authorization': 'Bearer CCC'
   }
 };
 
 exports.persons = function(callback) {
-  options.url = 'http://localhost:8081/api/persons/1';
+  options.url = 'http://persons:8081/api/persons/1';
+  console.log("url: ", options.url);
   request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);
   });
 }
 
 exports.accounts = function(callback) {
-  options.url = 'http://localhost:8082/api/accounts/?dni=1';
+  options.url = 'http://accounts:8082/api/accounts/?dni=1';
+  console.log("url: ", options.url);
   request(options, function(error, response, body) {
     handleResponse(error, response, body, callback);
   });

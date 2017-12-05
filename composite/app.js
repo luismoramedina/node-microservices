@@ -54,3 +54,4 @@ express.get('/api/clients/:id', function(req, res) {
 });
 
 express.listen(8080);
+console.log("Composite listening")
