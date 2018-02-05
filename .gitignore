@@ -39,3 +39,7 @@ jspm_packages
 #intellij
 .idea
 *.iml
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
